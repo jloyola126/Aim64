@@ -68,3 +68,21 @@ img {
 .show {
   display: block;
 }
+
+#exp-body{
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(168,135,50)), to(rgb(168,50,50))) fixed;
+}
+
+#header-title{
+  font: italic 3em Arial,sans-serif;
+  text-underline-position: below;
+}
+#back-home{
+  position: absolute;
+  top: 2%;
+  left: 70%;
+  color:white;
+  background-color: black;
+  border-radius: 6px;
+  padding: 10px;
+}
