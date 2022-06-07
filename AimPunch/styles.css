@@ -1,3 +1,24 @@
+table{
+    position: absolute;
+    left:74%;
+    top:50%;
+    margin: 0 auto;
+    font-size: large;
+    border: 1px solid black;
+    transform: translate(-50%, -50%);
+}
+h4{
+    position: absolute;
+    left:74%;
+    top:30%;
+    font-size: large;
+    transform: translate(-50%, -50%);
+}
+th,td{
+  border: 1px solid black;
+  padding: 1px;
+  text-align: center;
+}
 #range
 {
     position:absolute;
@@ -9,7 +30,7 @@
 }
 #img1 
 {
-    position:fixed;
+    position:absolute;
     top: 40%;
     right: 0%;
     width: 5%;
@@ -17,6 +38,9 @@
 }
 #score
 {
+    position: relative;
+    top: 0%;
+    height: 6%;
     font: 32px normal cartoon, verdana, sans-serif;
     color:black;
     padding: 10px;
@@ -24,8 +48,26 @@
     border: solid;
     user-select: none;
 }
+#greeting{
+    position: absolute;
+    left:80%;
+    top:10%;
+    font-size:2em;
+    user-select: none;
+    text-align: center;
+    color:black;
+}
+#cloud_heading{
+    position: absolute;
+    left:80%;
+    top:25%;
+    font-size:2em;
+    user-select: none;
+    text-align: center;
+    color:black;
+}
 .br-color{
-    background-color: darkgreen;
+   background-color: darkgreen;
 }
 #play-me{
     position: fixed;
@@ -98,12 +140,36 @@
     font: 20px normal cartoon, verdana, sans-serif;
     margin: auto;
 }
+#register{
+    position: absolute;
+    top:40%;
+    left:1%;
+    text-align: center;
+    color:black;
+    margin:auto;
+    border:solid;
+    border-radius: 6px;
+    width: 10em;
+    background-color: grey;
+}
+#login_button{
+    position: absolute;
+    top:50%;
+    left:1%;
+    text-align: center;
+    color:black;
+    margin:auto;
+    border:solid;
+    border-radius: 6px;
+    width: 10em;
+    background-color: grey;
+}
 #timer{
     position: absolute;
     width: 3em;
     border: solid;
     left:55%;
-    top:1%;
+    top:2%;
     font-size:2em;
     background-color:grey;
     user-select: none;
@@ -112,8 +178,85 @@
 #timed-out{
     position: absolute;
     left:50%;
-    top:50%;
+    top:30%;
     font: 30px normal cartoon, verdana, sans-serif;
     color:white;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+#form
+{
+    max-width:300px;
+    min-width:250px;
+    padding:10px 50px;
+    border:2px solid gray;
+    border-radius:10px;
+    font-family:raleway;
+    background-color:#fff;
+    top:50%;
+    left:50%;
+    display: none;
+    position: fixed;
+    transform: translate(-50%, -50%);
+}
+#form_login
+{
+    max-width:300px;
+    min-width:250px;
+    padding:10px 50px;
+    border:2px solid gray;
+    border-radius:10px;
+    font-family:raleway;
+    background-color:#fff;
+    top:50%;
+    left:50%;
+    display: none;
+    position: fixed;
+    transform: translate(-50%, -50%);
+}
+input[type=text] {
+    width:82%;
+    padding:10px;
+    margin-top:30px;
+    border:1px solid #ccc;
+    padding-left:40px;
+    font-size:16px;
+    font-family:raleway;
+}
+input[type="password"] {
+    width:82%;
+    padding:10px;
+    margin-top:30px;
+    border:1px solid #ccc;
+    padding-left:40px;
+    font-size:16px;
+    font-family:raleway;
+}
+#submit{
+    position: relative;
+    left:50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+#X{
+    position: absolute;
+    background: red;
+    color: white;
+    top: -10px;
+    right: -10px;
+    border-radius: 10px;
+}
+#high_score_db{
+    max-width:300px;
+    min-width:250px;
+    padding:10px 50px;
+    border:2px solid gray;
+    border-radius:10px;
+    font-family:raleway;
+    background-color:#fff;
+    display: none;
+    top:50%;
+    left:50%;
+    position: fixed;
     transform: translate(-50%, -50%);
 }
