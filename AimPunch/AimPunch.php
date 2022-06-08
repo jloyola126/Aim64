@@ -19,10 +19,11 @@
         <img alt = "Fire!" id ="img1" src="./targetcropped.png"/>
     </div>
     <div id = "suggestion-alert">Play on Full Screen for best experience</div>
+    <button id = "back-home" onclick= "toHomePage()"type="button">HomePage</button>
     <div id = "game-title">Aim 64</div>
     <button id="play-me">Play</button>
     <div class = "high-scores-parent">
-      <div id = "high-scores-heading"> High Score</div>
+      <div id = "high-scores-heading">Local High Score</div>
       <div id = "high-scores"></div>
       <button id = "register">Register to Save High Scores!</button>
       <input type="button" id = "login_button" value="Login"></button>
@@ -54,10 +55,14 @@
     <button id="X">X</button>
   
     <label for="Username">Username</label>
+    <br><br>
+    &bull;<small>Username can be up to 15 characters long</small>
     <input id="username" name="username" placeholder="Username" type="text">
     <br><br>
     
     <label for="password">Password</label>
+    <br><br>
+    &bull; <small>Password must be at least 8 characters and can be up to 15 characters long</small>
     <input id="password" name="password" placeholder="Password" type="password">
     <br><br>
     
@@ -82,7 +87,7 @@
     <div id="message_login"></div>
   </form>
   <form id="high_score_db" name="high_score_db">
-    <label for="hs_db">Score</label>
+    <label for="hs_db" id="text_center">Score</label>
     <div id = "show_score_num"></div>
     <br><br>
 

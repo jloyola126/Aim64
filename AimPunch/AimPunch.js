@@ -22,6 +22,10 @@ var toggleTimesUp = false; //determines correct message to display based on logi
 var isLoggedIn = ""; //determines if user is currently logged in
 var loggedInUser = ""; //determines which user is logged in
 
+//function to redirect to homepage
+function toHomePage(){
+    location.href = "http://www.jloyola.tech";
+}
 //if current user is logged in, grab their high score for score comparison
 if(localStorage.getItem("isLoggedInStr") == "true"){
     var username_db = localStorage.getItem("isLoggedInUserStr"); //grab logged in user for database fetch
@@ -457,6 +461,7 @@ resetForm = function(x)
     document.getElementById("play-me").style.pointerEvents = 'auto'; //reset pointer events for Play button
     document.getElementById("register").style.pointerEvents = 'auto'; //reset pointer events for Register button
     document.getElementById("login_button").style.pointerEvents = 'auto'; //reset pointer events for Login button
+    document.getElementById("back-home").style.pointerEvents = 'auto'; //reset pointer events for HomePage button
 }
 //function that handles form manipulation after Register button is clicked on 
 document.getElementById("register").onclick = function()
@@ -469,6 +474,7 @@ document.getElementById("register").onclick = function()
     document.getElementById("play-me").style.pointerEvents = 'none'; //disable pointer events for Play button
     document.getElementById("register").style.pointerEvents = 'none'; //disable pointer events for Register button
     document.getElementById("login_button").style.pointerEvents = 'none'; //disable pointer events for Login button
+    document.getElementById("back-home").style.pointerEvents = 'none'; //disable pointer events for HomePage button
     document.getElementById("X").onclick =function()
     {
         resetForm("form"); //reset form upon clicking on X of every form window
@@ -485,6 +491,7 @@ document.getElementById("login_button").onclick = function()
     document.getElementById("play-me").style.pointerEvents = 'none'; //disable pointer events for Play button
     document.getElementById("register").style.pointerEvents = 'none'; //disable pointer events for Register button
     document.getElementById("login_button").style.pointerEvents = 'none'; //disable pointer events for Login button
+    document.getElementById("back-home").style.pointerEvents = 'none'; //disable pointer events for HomePage button
     document.getElementById("X").onclick =function()
     {
         resetForm("form_login"); //reset form upon clicking on X of every form window
@@ -517,6 +524,9 @@ document.getElementById("play-me").onclick = function ()
     //...remove Top 5 table
     var removeTop5 = document.getElementById("top_5");
     remove(removeTop5);
+    //...removeHomePageButton
+    var removeHomePageButton = document.getElementById("back-home");
+    remove(removeHomePageButton);
     document.getElementById("range").onclick = function () //getting the element which is Range or the clickable area on screen
     {
         shots++; //if its clicked, increment the number of shots taken
