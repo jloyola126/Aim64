@@ -24,10 +24,9 @@
 
         $count = $row['cntUser'];
 
-        $_SESSION['uname'] = $uname;
-
         if($count > 0) //if user found an row is at least 1
         {
+           $_SESSION['uname'] = $uname; //check to make the user exists in the database and if so assign them a name
            echo 1; //echo 1 for successful query
         }
         else

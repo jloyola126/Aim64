@@ -12,24 +12,37 @@
 </head>
 
 <body class="br-color">
-  <div id = "opac-default">
-    <div id = "range">
-        <div id = "score"></div>
-        <div id = "timer"></div>
-        <img alt = "Fire!" id ="img1" src="./targetcropped.png"/>
+  <div id  = "master-div">
+    <div id = "opac-default">
+      <div id = "range">
+          <div id = "score"></div>
+          <div id = "timer"></div>
+          <img alt = "Fire!" id ="img1" src="./targetcropped.png"/>
+      </div>
+      <div id = "suggestion-alert">Play on Full Screen for best experience</div>
+      <button id = "back-home" onclick= "toHomePage()"type="button">HomePage</button>
+      <div id = "game-title">Aim 64</div>
+      <button id="play-me">Play</button>
+      <div class = "high-scores-parent">
+        <div id = "high-scores-heading">Local High Score</div>
+        <div id = "high-scores"></div>
+        <button id = "register">Register to Save High Scores!</button>
+        <input type="button" id = "login_button" value="Login"></button>
+      </div>
+      <div id="timed-out"></div>
+      <button id="stop-me">Stop Session</button>
+      <button id="menu">Menu</button>
     </div>
-    <div id = "suggestion-alert">Play on Full Screen for best experience</div>
-    <button id = "back-home" onclick= "toHomePage()"type="button">HomePage</button>
-    <div id = "game-title">Aim 64</div>
-    <button id="play-me">Play</button>
-    <div class = "high-scores-parent">
-      <div id = "high-scores-heading">Local High Score</div>
-      <div id = "high-scores"></div>
-      <button id = "register">Register to Save High Scores!</button>
-      <input type="button" id = "login_button" value="Login"></button>
-    </div>
-    <div id="timed-out"></div>
-    <button id="stop-me">Restart</button>
+  </div>
+  <div id="alert">Game Ended, Select Menu to return to the Home Page</div>
+  <div id="alert-hard">Hard Difficulty</div>
+  <div id="alert-expert">Expert Difficulty</div>
+  <img id = 'gif' src="times-up.gif">
+  <div id="choose-sec">
+    <h3 id = "time-limit-heading">Choose Time Limit:</h3>
+    <button id = "sec-style30">30s</button>
+    <button id = "sec-style60">60s</button>
+    <button id = "sec-style90">90s</button>
   </div>
   <section id="top_5">
     <h4>Top 5 Players!</h4>
@@ -56,13 +69,13 @@
   
     <label for="Username">Username</label>
     <br><br>
-    &bull;<small>Username can be up to 15 characters long</small>
+    <large id = "username-label"><li>Username can be up to 15 characters long</li></large>
     <input id="username" name="username" placeholder="Username" type="text">
     <br><br>
     
     <label for="password">Password</label>
     <br><br>
-    &bull; <small>Password must be at least 8 characters and can be up to 15 characters long</small>
+    <large id = "password-label"><li>Password must be at least 8 characters and can be up to 15 characters long</li></large>
     <input id="password" name="password" placeholder="Password" type="password">
     <br><br>
     
@@ -87,7 +100,7 @@
     <div id="message_login"></div>
   </form>
   <form id="high_score_db" name="high_score_db">
-    <label for="hs_db" id="text_center">Score</label>
+    <div id="text_center">Score</div>
     <div id = "show_score_num"></div>
     <br><br>
 

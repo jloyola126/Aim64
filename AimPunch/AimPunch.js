@@ -21,7 +21,8 @@ var logAccHigh = false; //determines if current new score is higher than high sc
 var toggleTimesUp = false; //determines correct message to display based on login status
 var isLoggedIn = ""; //determines if user is currently logged in
 var loggedInUser = ""; //determines which user is logged in
-
+var sec = 90 //default value of seconds
+var displayDiff = false;
 //function to redirect to homepage
 function toHomePage(){
     location.href = "http://www.jloyola.tech";
@@ -48,7 +49,7 @@ if(localStorage.getItem("isLoggedInStr") == "true"){
 function timedOutReload()
 {
     //Only display the highscore submission window if a user is logged in and new score is higher than current score pulled from database
-    if(localStorage.getItem("isLoggedInStr") == "true" && document.getElementById("login_button").value == "Logout" && (localStorage.getItem("saved_highscore") < score))
+    if(localStorage.getItem("isLoggedInStr") == "true" && document.getElementById("login_button").value == "Logout" && (localStorage.getItem("saved_highscore") <= score))
     {
         document.getElementById("high_score_db").style.display = "block"; //if the parameters are met, show score submission window
         document.getElementById("show_score_num").textContent = score; //display current new score
@@ -56,27 +57,35 @@ function timedOutReload()
     }
     if(toggleTimesUp == true) //if timesUp is set to true, show verbage matching login status as true
     {
-        document.getElementById("timed-out").textContent= 'TIMES UP, Click submit to save your score online!'
+        document.getElementById("alert").style.display = "block";
+        document.getElementById("alert").textContent = 'TIMES UP, Click submit to save your score online!'
+        document.getElementById("menu").style.top = '20%';
+        document.getElementById("menu").style.left = '50%';
+        document.getElementById("menu").style.transform = 'translate(-50%, -50%)';
+        document.getElementById("stop-me").style.display = "none";
     }
     else //show verbage matching a user who is not logged in
     {
-        document.getElementById("timed-out").textContent= 'TIMES UP, Score Saved Locally, Click Restart to Play Again';
+        document.getElementById("menu").style.top = '20%';
+        document.getElementById("menu").style.left = '50%';
+        document.getElementById("menu").style.transform = 'translate(-50%, -50%)';
+        document.getElementById("stop-me").style.display = "none";
+        document.getElementById("alert").style.display= "block";
+        document.getElementById("gif").style.display = "block";
     }
 
     var rangeRemove = document.getElementById("range"); 
     remove(rangeRemove); //remove range element from current display
     var timerRemove = document.getElementById("timer");
     remove(timerRemove); //remove timer element from current display
-    document.body.style.backgroundColor = 'black'; //set background to black
+    document.body.style.backgroundColor = 'navy'; //set background to black
 } 
 
-function timer(x)
+function timer(x,sec)
 {
     //if default timer variable passed in is true, set timer to 90 seconds
     if (x)
     {
-        var sec = 90;
-
         //set interval by 1 second and format
         var timer = setInterval(function()
         {
@@ -108,7 +117,7 @@ function getRandomIntInclusive(min, max)
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
-      
+
 //Function moveIt() will handle spawning
 function moveIt()
 {
@@ -168,6 +177,12 @@ function moveIt()
 function scoreUp()
 {
     score++;
+    if(score == 30){
+        $( "div#alert-hard").fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
+    }
+    if(score == 60){
+        $( "div#alert-expert" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
+    }
     scoreboard();
 }
 //once reload event is called, reload the page which will call window.onload()
@@ -175,20 +190,27 @@ function reloadEvent()
 {
     document.getElementById("stop-me").onclick = function()
     {
-        location.reload();
+        timedOutReload();
+    }
+    document.getElementById("menu").onclick = function(){
+        window.location.reload();
     }
 }
 function reloadHandler()
 {
     var x = document.getElementById("stop-me");
+    var menu = document.getElementById("menu");
     x.style.display = "none"; //set the display of the restart button to be omitted
+    menu.style.display= "none";
     //Once play button is clicked on, restart button will show up, calling reloadEvent() to handle onClick of said button
     if (x.style.display == "none"){
         x.style.display = "block";
+        menu.style.display = "block";
         reloadEvent();
     }
     else{
         x.style.display = "none";
+        menu.style.display = "none";
     }
 }
 function remove(y)
@@ -257,7 +279,7 @@ function scoreboard()
 
 scoreboard(); //call the scoreboard to show preloaded.
 //Once play me is clicked...
-timer(defaultTimer);
+timer(defaultTimer,sec);
 
 // Execute a function when the user presses a key on the keyboard
 $('#form').keypress(function (e) {
@@ -497,10 +519,41 @@ document.getElementById("login_button").onclick = function()
         resetForm("form_login"); //reset form upon clicking on X of every form window
     }
 }
+document.getElementById("sec-style30").onclick = function(){
+    sec = 30;
+    document.getElementById("sec-style30").style.backgroundColor = 'white';  
+    document.getElementById("sec-style30").style.color = 'black';
+    document.getElementById("sec-style60").style.backgroundColor = 'black';  
+    document.getElementById("sec-style60").style.color = 'white';
+    document.getElementById("sec-style90").style.backgroundColor = 'black';  
+    document.getElementById("sec-style90").style.color = 'white';
+}
+document.getElementById("sec-style60").onclick = function(){
+    sec = 60;   
+    document.getElementById("sec-style60").style.backgroundColor = 'white';  
+    document.getElementById("sec-style60").style.color = 'black';
+    document.getElementById("sec-style30").style.backgroundColor = 'black';  
+    document.getElementById("sec-style30").style.color = 'white';
+    document.getElementById("sec-style90").style.backgroundColor = 'black';  
+    document.getElementById("sec-style90").style.color = 'white';
+}
+document.getElementById("sec-style90").onclick = function(){
+    sec = 90;    
+    document.getElementById("sec-style90").style.backgroundColor = 'white';  
+    document.getElementById("sec-style90").style.color = 'black';
+    document.getElementById("sec-style30").style.backgroundColor = 'black';  
+    document.getElementById("sec-style30").style.color = 'white';
+    document.getElementById("sec-style60").style.backgroundColor = 'black';  
+    document.getElementById("sec-style60").style.color = 'white';
+}
 document.getElementById("play-me").onclick = function () 
 {
+    if(localStorage.getItem("isLoggedInStr") == "true"){
+        document.getElementById("greeting").style.display = "none";
+    }
+    document.getElementById("choose-sec").style.display = "none";
     defaultTimer = true; //default timer variable set when play button is clicked
-    timer(defaultTimer);
+    timer(defaultTimer,sec);
     el = document.getElementById("img1");  //getting the Cannon Image by ID
     el.onclick = scoreUp;
     //...remove High Scores heading
